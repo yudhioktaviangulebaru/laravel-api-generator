@@ -1,4 +1,4 @@
-name: Laravel
+name: ApiGen Tests
 
 on:
   push:
@@ -8,9 +8,7 @@ on:
 
 jobs:
   tests:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
       with:
