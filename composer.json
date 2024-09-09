@@ -1,0 +1,65 @@
+{
+    "name": "yudhi/apigen",
+    "description": "Simple API generator for Laravel",
+    "require-dev": {
+        "orchestra/testbench": "^9.4",
+        "pestphp/pest": "^2.35",
+        "laravel/pint": "^1.17"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Yudhi\\Apigen\\": "src/"
+        },
+        "files": [
+
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Yudhi\\Apigen\\Test\\": "tests/",
+            "Workbench\\App\\": "workbench/app/",
+            "Workbench\\Database\\Factories\\": "workbench/database/factories/",
+            "Workbench\\Database\\Seeders\\": "workbench/database/seeders/"
+        },
+        "files": [
+
+        ]
+    },
+    "authors": [
+        {
+            "name": "Yudhi"
+        }
+    ],
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "scripts": {
+        "format": "@php vendor/bin/pint",
+        "test": "vendor/bin/pest",
+        "testbench": "vendor/bin/testbench",
+        "stunt": "vendor/bin/phpstan analyse /src",
+        "post-check": [
+            "@composer format",
+            "@composer test",
+            "@composer stunt"
+        ],
+        "post-autoload-dump": [
+            "@clear",
+            "@prepare"
+        ],
+        "clear": "@php vendor/bin/testbench package:purge-skeleton --ansi",
+        "prepare": "@php vendor/bin/testbench package:discover --ansi",
+        "build": "@php vendor/bin/testbench workbench:build --ansi",
+        "serve": [
+            "Composer\\Config::disableProcessTimeout",
+            "@build",
+            "@php vendor/bin/testbench serve --ansi"
+        ],
+        "lint": [
+            "@php vendor/bin/phpstan analyse --verbose --ansi"
+        ]
+    }
+}

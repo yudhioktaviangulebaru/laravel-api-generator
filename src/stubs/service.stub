@@ -1,0 +1,57 @@
+<?php
+
+namespace {{BaseNamespace}};
+use Illuminate\Http\JsonResponse;
+use Throwable;
+use Yudhi\Apigen\Enums\HttpCodeEnum;
+use Yudhi\Apigen\Types\ResponseManager;
+
+class {{serviceName}}
+{
+    use ResponseManager;
+    public function __construct(protected {{repositoryName}} $repository){
+
+    }
+
+    public function filter(): JsonResponse {
+        try {
+            $filteredData = $this->repository->findAll();
+            return $this->successResponse($filteredData);
+        } catch (Throwable $throwable) {
+            return $this->errorResponse($throwable, HttpCodeEnum::INTERNAL_SERVER_ERROR);
+        }
+    }
+    public function save(array $data): JsonResponse
+    {
+        try {
+            $createdData = $this->repository->create($data);
+            return $this->createdResponse($createdData);
+        }catch (Throwable $throwable) {
+            return $this->errorResponse($throwable, HttpCodeEnum::BAD_REQUEST);
+        }
+    }
+
+    public function update({{entityName}} $entity, array $data): JsonResponse
+    {
+        try {
+            $updatedData = $this->repository->update($entity, $data);
+            return $this->successResponse($updatedData);
+        }catch (Throwable $throwable) {
+            return $this->errorResponse($throwable, HttpCodeEnum::BAD_REQUEST);
+        }
+    }
+
+    public function delete(int $id): JsonResponse {
+        try {
+            $deletedData = $this->repository->delete($id);
+            return $this->successResponse($deletedData);
+        }catch (Throwable $throwable) {
+            return $this->errorResponse($throwable, HttpCodeEnum::BAD_REQUEST);
+        }
+    }
+
+    public function get({{entityName}} $entity): JsonResponse
+    {
+        return $this->successResponse($entity);
+    }
+}

@@ -1,0 +1,15 @@
+<?php
+
+namespace {{requestNamespace}};
+
+class {{createRequestName}} extends {{baseRequestName}}
+{
+    public static function getRules(): array {
+       return parent::rules();
+    }
+    public function rules(): array
+    {
+       return self::getRules();
+    }
+
+}

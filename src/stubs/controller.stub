@@ -1,0 +1,35 @@
+<?php
+
+namespace {{BaseNamespace}};
+
+use Illuminate\Http\Request;
+class {{controllerName}} extends {{abstractControllerName}}
+{
+    public function __construct(protected {{serviceName}} $service){
+    }
+
+    public function index()
+    {
+        return $this->service->filter();
+    }
+
+    public function store({{createRequestName}} $request)
+    {
+        return $this->service->save($request->input());
+    }
+
+    public function show({{entityName}} $id)
+    {
+        return $this->service->get($id);
+    }
+
+    public function update({{updateRequestName}} $request, string $id)
+    {
+        return $this->service->update($id, $request->all());
+    }
+
+    public function destroy(string $id)
+    {
+        return $this->service->delete($id);
+    }
+}

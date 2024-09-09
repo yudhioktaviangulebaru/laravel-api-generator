@@ -1,0 +1,21 @@
+<?php
+
+namespace {{BaseNamespace}};
+use Yudhi\Apigen\Traits\HasBaseRepository;
+
+class {{repositoryName}} {
+
+    use HasBaseRepository;
+    public function __construct(protected {{entityName}} $entity){}
+    public function raw()
+    {
+        return $this->entity;
+    }
+
+    public function update({{entityName}} $entity, array $data)
+    {
+        $entity->update($data);
+        return $find;
+    }
+
+}
