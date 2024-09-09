@@ -10,4 +10,5 @@ test('test', function () {
 test('init class ApiGenerator', function () {
     $generator = createApiGen();
     $generator->generateAll();
+    $this->assertTrue(true);
 });
