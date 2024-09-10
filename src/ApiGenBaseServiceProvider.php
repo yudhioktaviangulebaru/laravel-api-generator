@@ -20,7 +20,7 @@ class ApiGenBaseServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__.'/Config/apigen.php' => config_path('apigen.php'),
-        ], 'apigen_config');
+        ], 'laravel-assets');
 
         AboutCommand::add('Laravel API Generator By Yudhi', fn () => ['version' => '1.0.0.0']);
 
