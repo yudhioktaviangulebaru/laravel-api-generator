@@ -1,6 +1,7 @@
 {
     "name": "yudhi/apigen",
     "description": "Simple API generator for Laravel",
+    "minimum-stability": "dev",
     "require-dev": {
         "orchestra/testbench": "^9.4",
         "pestphp/pest": "^2.35",
