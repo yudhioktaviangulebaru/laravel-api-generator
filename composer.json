@@ -1,7 +1,7 @@
 {
     "name": "yudhi/apigen",
     "type": "library",
-    "version": "1.0.1",
+    "version": "1.0.1.0",
     "description": "Simple API generator for Laravel",
     "minimum-stability": "stable",
     "require-dev": {
