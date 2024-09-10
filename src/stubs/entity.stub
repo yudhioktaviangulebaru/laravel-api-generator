@@ -2,16 +2,19 @@
 
 namespace {{BaseNamespace}};
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class {{entityName}} extends Model
 {
+    use HasFactory;
+
     protected $fillable = [];
     protected function casts(): array {
-    return [];
-}
+        return [];
+    }
     protected function attributes(): array {
-    return [];
-}
+        return [];
+    }
 
     /*
     *|--------------------------------------------------------------

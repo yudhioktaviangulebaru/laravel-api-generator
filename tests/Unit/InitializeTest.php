@@ -1,5 +1,5 @@
 <?php
 
-test("can initialize", function () {
+test('can initialize', function () {
     $this->assertTrue(true);
 });
