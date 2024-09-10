@@ -5,6 +5,7 @@ namespace Yudhi\Apigen\Test;
 use Orchestra\Testbench\TestCase as BaseTestCase;
 use Yudhi\Apigen\ApiGenBaseServiceProvider;
 use Yudhi\Apigen\Core\Controller;
+use Yudhi\Apigen\Helpers\DirHelper;
 
 class TestCases extends BaseTestCase
 {
@@ -23,17 +24,17 @@ class TestCases extends BaseTestCase
         $app['config']->set('apigen', [
             'abstractControllerName' => Controller::class,
             'rootNamespace' => 'Yudhi\\ApiGen\\App',
-            'basePath' => $curDir[0].DIRECTORY_SEPARATOR.'api-generator',
-            'appPath' => $curDirSrc,
-            'stubPath' => [
-                'controller' => '{rootPath}'.DIRECTORY_SEPARATOR.'stubs'.DIRECTORY_SEPARATOR.'controller.stub',
-                'entity' => '{rootPath}'.DIRECTORY_SEPARATOR.'stubs'.DIRECTORY_SEPARATOR.'entity.stub',
-                'repository' => '{rootPath}'.DIRECTORY_SEPARATOR.'stubs'.DIRECTORY_SEPARATOR.'repository.stub',
-                'service' => '{rootPath}'.DIRECTORY_SEPARATOR.'stubs'.DIRECTORY_SEPARATOR.'service.stub',
-                'requests' => [
-                    'base' => '{rootPath}'.DIRECTORY_SEPARATOR.'stubs'.DIRECTORY_SEPARATOR.'request.base.stub',
-                    'create' => '{rootPath}'.DIRECTORY_SEPARATOR.'stubs'.DIRECTORY_SEPARATOR.'request.create.stub',
-                    'update' => '{rootPath}'.DIRECTORY_SEPARATOR.'stubs'.DIRECTORY_SEPARATOR.'request.update.stub',
+            'basePath'      => $curDir[0].DIRECTORY_SEPARATOR.'api-generator',
+            'appPath'       => $curDirSrc,
+            'stubPath'      => [
+                'controller' => DirHelper::stubDir('controller.stub'),
+                'entity'     => DirHelper::stubDir('entity.stub'),
+                'repository' => DirHelper::stubDir('repository.stub'),
+                'service'    => DirHelper::stubDir('service.stub'),
+                'requests'   => [
+                    'base'   => DirHelper::stubDir('request.base.stub'),
+                    'create' => DirHelper::stubDir('request.create.stub'),
+                    'update' => DirHelper::stubDir('request.update.stub'),
                 ],
             ],
 

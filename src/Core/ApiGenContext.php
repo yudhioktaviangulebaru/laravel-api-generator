@@ -7,6 +7,7 @@ use Yudhi\Apigen\Dto\DConfig;
 use Yudhi\Apigen\Enums\GenerationTypeEnum;
 use Yudhi\Apigen\Enums\NamespacesEnum;
 use Yudhi\Apigen\Enums\OutputFileNameEnum;
+use Yudhi\Apigen\Helpers\DirHelper;
 use Yudhi\Apigen\Helpers\NamespaceEnumHelper;
 use Yudhi\Apigen\Helpers\OutputFileEnumHelper;
 
@@ -52,46 +53,38 @@ class ApiGenContext
         switch ($this->generationType) {
             case GenerationTypeEnum::CONTROLLER:
                 $this->outputFileType = OutputFileNameEnum::Controller;
-                $this->stubPath = $this->config->getStubPath()->getController();
-
-                return $this->stubPathReplace()
-                    ->setReplacer(GenerationTypeEnum::CONTROLLER);
+                $this->stubPath = DirHelper::stubDir('controller.stub');
+                return $this->setReplacer(GenerationTypeEnum::CONTROLLER);
             case GenerationTypeEnum::ENTITY:
                 $this->outputFileType = OutputFileNameEnum::Entity;
-                $this->stubPath = $this->config->getStubPath()->getEntity();
+                $this->stubPath = DirHelper::stubDir('entity.stub');
 
-                return $this->stubPathReplace()
-                    ->setReplacer(GenerationTypeEnum::ENTITY);
+                return $this->setReplacer(GenerationTypeEnum::ENTITY);
             case GenerationTypeEnum::REPOSITORY:
                 $this->outputFileType = OutputFileNameEnum::Repository;
-                $this->stubPath = $this->config->getStubPath()->getRepository();
+                $this->stubPath = DirHelper::stubDir('repository.stub');
 
-                return $this->stubPathReplace()
-                    ->setReplacer(GenerationTypeEnum::REPOSITORY);
+                return $this->setReplacer(GenerationTypeEnum::REPOSITORY);
             case GenerationTypeEnum::SERVICE:
                 $this->outputFileType = OutputFileNameEnum::Service;
-                $this->stubPath = $this->config->getStubPath()->getService();
+                $this->stubPath = DirHelper::stubDir('service.stub');
 
-                return $this->stubPathReplace()
-                    ->setReplacer(GenerationTypeEnum::SERVICE);
+                return $this->setReplacer(GenerationTypeEnum::SERVICE);
             case GenerationTypeEnum::REQUEST_BASE:
                 $this->outputFileType = OutputFileNameEnum::BaseRequest;
-                $this->stubPath = $this->config->getStubPath()->getRequests()->getBase();
+                $this->stubPath = DirHelper::stubDir('request.base.stub');
 
-                return $this->stubPathReplace()
-                    ->setReplacer(GenerationTypeEnum::REQUEST_BASE);
+                return $this->setReplacer(GenerationTypeEnum::REQUEST_BASE);
             case GenerationTypeEnum::REQUEST_CREATE:
                 $this->outputFileType = OutputFileNameEnum::CreateRequest;
-                $this->stubPath = $this->config->getStubPath()->getRequests()->getCreate();
+                $this->stubPath = DirHelper::stubDir('request.create.stub');
 
-                return $this->stubPathReplace()
-                    ->setReplacer(GenerationTypeEnum::REQUEST_CREATE);
+                return $this->setReplacer(GenerationTypeEnum::REQUEST_CREATE);
             default:
                 $this->outputFileType = OutputFileNameEnum::UpdateRequest;
-                $this->stubPath = $this->config->getStubPath()->getRequests()->getUpdate();
+                $this->stubPath = DirHelper::stubDir('request.update.stub');
 
-                return $this->stubPathReplace()
-                    ->setReplacer(GenerationTypeEnum::REQUEST_UPDATE);
+                return $this->setReplacer(GenerationTypeEnum::REQUEST_UPDATE);
         }
     }
 
@@ -114,9 +107,7 @@ class ApiGenContext
 
     private function stubPathReplace(): self
     {
-        $this->stubPath = str_replace('{rootPath}', $this->config->getBasePath().DIRECTORY_SEPARATOR.'src'.DIRECTORY_SEPARATOR, $this->stubPath);
-
-        $this->stubPath = str_replace(DIRECTORY_SEPARATOR.DIRECTORY_SEPARATOR, DIRECTORY_SEPARATOR, $this->stubPath);
+        $this->stubPath = DirHelper::stubDir();
 
         return $this;
     }
