@@ -3,7 +3,7 @@
 a simple artisan command to generate all things you need 
 
 ### Install 
-```composer require yudhi/apigen:dev-master```
+```composer require yudhi/apigen```
 
 ### Configuration
 - Open ```config/apigen.php``` file 
