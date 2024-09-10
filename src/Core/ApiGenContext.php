@@ -112,9 +112,9 @@ class ApiGenContext
         $controllerName = Str::studly($this->moduleName.' Controller');
         $serviceName = Str::studly($this->moduleName.' Service');
         $repositoryName = Str::studly($this->moduleName.' Repository');
-        $baseRequestName = Str::studly("Base $this->moduleName request");
-        $createRequestName = Str::studly("Create $this->moduleName request");
-        $updateRequestName = Str::studly("update $this->moduleName request");
+        $baseRequestName = Str::studly("$this->moduleName base request");
+        $createRequestName = Str::studly("$this->moduleName create request");
+        $updateRequestName = Str::studly("$this->moduleName update request");
         $requestNamespace = NamespaceEnumHelper::getNamespace(
             NamespacesEnum::Request,
             $this->config->getRootNamespace(),
