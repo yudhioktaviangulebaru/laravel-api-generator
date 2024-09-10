@@ -11,9 +11,7 @@
         "psr-4": {
             "Yudhi\\Apigen\\": "src/"
         },
-        "files": [
-
-        ]
+        "files": []
     },
     "autoload-dev": {
         "psr-4": {
@@ -22,9 +20,7 @@
             "Workbench\\Database\\Factories\\": "workbench/database/factories/",
             "Workbench\\Database\\Seeders\\": "workbench/database/seeders/"
         },
-        "files": [
-
-        ]
+        "files": []
     },
     "authors": [
         {
