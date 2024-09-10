@@ -64,7 +64,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Yudhi\\Apigen\\ApiGenServiceProvider"
+                "Yudhi\\Apigen\\ApiGenBaseServiceProvider"
             ]
         }
     }

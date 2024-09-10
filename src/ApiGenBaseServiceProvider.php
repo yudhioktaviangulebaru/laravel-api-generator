@@ -17,9 +17,9 @@ class ApiGenBaseServiceProvider extends ServiceProvider
 
     protected function registerPublishing(): void
     {
-        $config = __DIR__.'/Config/apigen.php';
+
         $this->publishes([
-            $config => config_path('apigen.php'),
+            __DIR__.'/Config/apigen.php' => config_path('apigen.php'),
         ], 'apigen_config');
 
         AboutCommand::add('Laravel API Generator By Yudhi', fn () => ['version' => '1.0.0.0']);
