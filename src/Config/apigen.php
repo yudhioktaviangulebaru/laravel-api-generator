@@ -8,7 +8,7 @@ return
         'abstractControllerName' => Controller::class,
         'rootNamespace' => 'Yudhi\\ApiGen\\App',
         'basePath'      => base_path() . DIRECTORY_SEPARATOR,
-        'appPath'       => app_path() . DIRECTORY_SEPARATOR,
+        'appPath'       => app_path('/Core') . DIRECTORY_SEPARATOR,
         'stubPath'      => [
             'controller' => DirHelper::stubDir('controller.stub'),
             'entity'     => DirHelper::stubDir('entity.stub'),

@@ -19,7 +19,7 @@ class TestCases extends BaseTestCase
     public function getEnvironmentSetUp($app): void
     {
         $curDir = explode('api-generator', __DIR__);
-        $curDirSrc = $curDir[0].'api-generator'.DIRECTORY_SEPARATOR.'app'.DIRECTORY_SEPARATOR.'Core'.DIRECTORY_SEPARATOR;
+        $curDirSrc = $curDir[0].'api-generator'.DIRECTORY_SEPARATOR.'app'.DIRECTORY_SEPARATOR;
         $curDirStub = $curDir[0].'api-generator'.DIRECTORY_SEPARATOR.'src'.DIRECTORY_SEPARATOR.'stubs'.DIRECTORY_SEPARATOR;
         $app['config']->set('apigen', [
             'abstractControllerName' => Controller::class,

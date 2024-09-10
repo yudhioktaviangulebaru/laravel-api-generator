@@ -58,32 +58,26 @@ class ApiGenContext
             case GenerationTypeEnum::ENTITY:
                 $this->outputFileType = OutputFileNameEnum::Entity;
                 $this->stubPath = DirHelper::stubDir('entity.stub');
-
                 return $this->setReplacer(GenerationTypeEnum::ENTITY);
             case GenerationTypeEnum::REPOSITORY:
                 $this->outputFileType = OutputFileNameEnum::Repository;
                 $this->stubPath = DirHelper::stubDir('repository.stub');
-
                 return $this->setReplacer(GenerationTypeEnum::REPOSITORY);
             case GenerationTypeEnum::SERVICE:
                 $this->outputFileType = OutputFileNameEnum::Service;
                 $this->stubPath = DirHelper::stubDir('service.stub');
-
                 return $this->setReplacer(GenerationTypeEnum::SERVICE);
             case GenerationTypeEnum::REQUEST_BASE:
                 $this->outputFileType = OutputFileNameEnum::BaseRequest;
                 $this->stubPath = DirHelper::stubDir('request.base.stub');
-
                 return $this->setReplacer(GenerationTypeEnum::REQUEST_BASE);
             case GenerationTypeEnum::REQUEST_CREATE:
                 $this->outputFileType = OutputFileNameEnum::CreateRequest;
                 $this->stubPath = DirHelper::stubDir('request.create.stub');
-
                 return $this->setReplacer(GenerationTypeEnum::REQUEST_CREATE);
             default:
                 $this->outputFileType = OutputFileNameEnum::UpdateRequest;
                 $this->stubPath = DirHelper::stubDir('request.update.stub');
-
                 return $this->setReplacer(GenerationTypeEnum::REQUEST_UPDATE);
         }
     }
