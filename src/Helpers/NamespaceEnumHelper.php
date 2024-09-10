@@ -23,4 +23,9 @@ class NamespaceEnumHelper
             $data
         );
     }
+
+    public static function getNamespaceDetail(string $requestNamespace, string $requestName): string
+    {
+        return $requestNamespace.'\\'.$requestName;
+    }
 }

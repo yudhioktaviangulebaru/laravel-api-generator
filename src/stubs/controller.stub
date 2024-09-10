@@ -2,7 +2,9 @@
 
 namespace {{BaseNamespace}};
 
-use Illuminate\Http\Request;
+use {{createRequestNamespace}};
+use {{updateRequestNamespace}};
+
 class {{controllerName}} extends {{abstractControllerName}}
 {
     public function __construct(protected {{serviceName}} $service){
@@ -20,7 +22,7 @@ class {{controllerName}} extends {{abstractControllerName}}
 
     public function show({{entityName}} $id)
     {
-        return $this->service->get($id);
+        return $this->service->findById($id);
     }
 
     public function update({{updateRequestName}} $request, string $id)

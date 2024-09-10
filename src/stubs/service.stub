@@ -50,7 +50,7 @@ class {{serviceName}}
         }
     }
 
-    public function get({{entityName}} $entity): JsonResponse
+    public function findById({{entityName}} $entity): JsonResponse
     {
         return $this->successResponse($entity);
     }

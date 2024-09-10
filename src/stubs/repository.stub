@@ -1,11 +1,9 @@
 <?php
 
 namespace {{BaseNamespace}};
-use Yudhi\Apigen\Traits\HasBaseRepository;
 
 class {{repositoryName}} {
 
-    use HasBaseRepository;
     public function __construct(protected {{entityName}} $entity){}
     public function raw()
     {
@@ -15,7 +13,27 @@ class {{repositoryName}} {
     public function update({{entityName}} $entity, array $data)
     {
         $entity->update($data);
-        return $find;
+        return $entity->refresh();
     }
+
+
+     public function findAll(): {{entityName}}[]
+        {
+            return $this->entity->all();
+        }
+
+        public function create(array $data): {{entityName}}
+        {
+            return $this->entity->create($data);
+        }
+
+        public function delete(int $id): bool
+        {
+            $data = $this->entity->find($id);
+            $find = $data;
+            $find->delete();
+
+            return $data;
+        }
 
 }

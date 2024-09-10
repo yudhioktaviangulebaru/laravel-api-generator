@@ -46,7 +46,7 @@ class ApiGenContext
         return $this;
     }
 
-    public function setAttributes(): static
+    public function setAttributes(): self
     {
         $this->stubPath = '';
         switch ($this->generationType) {
@@ -130,6 +130,14 @@ class ApiGenContext
         $baseRequestName = Str::studly("Base $this->moduleName request");
         $createRequestName = Str::studly("Create $this->moduleName request");
         $updateRequestName = Str::studly("update $this->moduleName request");
+        $requestNamespace = NamespaceEnumHelper::getNamespace(
+            NamespacesEnum::Request,
+            $this->config->getRootNamespace(),
+            $this->moduleName
+        );
+        $createRequestNamespace = NamespaceEnumHelper::getNamespaceDetail($requestNamespace, $createRequestName);
+        $updateRequestNamespace = NamespaceEnumHelper::getNamespaceDetail($requestNamespace, $updateRequestName);
+
         $this->replacer = [
             '{{abstractControllerName}}' => $this->getConfig()->getAbstractControllerName(),
             '{{BaseNamespace}}' => $this->getBaseNamespace(),
@@ -141,11 +149,9 @@ class ApiGenContext
             '{{updateRequestName}}' => $updateRequestName,
             '{{repositoryName}}' => $repositoryName,
             '{{baseRequestName}}' => $baseRequestName,
-            '{{requestNamespace}}' => NamespaceEnumHelper::getNamespace(
-                NamespacesEnum::Request,
-                $this->config->getRootNamespace(),
-                $this->moduleName
-            ),
+            '{{requestNamespace}}' => $requestNamespace,
+            '{{createRequestNamespace}}' => $createRequestNamespace,
+            '{{updateRequestNamespace}}' => $updateRequestNamespace,
         ];
 
         return $this;

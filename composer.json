@@ -36,7 +36,7 @@
         "format": "@php vendor/bin/pint",
         "test": "vendor/bin/pest",
         "testbench": "vendor/bin/testbench",
-        "stunt": "vendor/bin/phpstan analyse /src",
+        "stunt": "vendor/bin/phpstan analyse /src --level=5",
         "post-check": [
             "@composer format",
             "@composer test",

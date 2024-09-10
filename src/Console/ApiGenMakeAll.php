@@ -22,6 +22,7 @@ class ApiGenMakeAll extends Command
     protected $description = 'Create set API';
 
     private string $module = '';
+
     public function handle()
     {
         $this->module = $this->argument('module') ?? '';
@@ -32,10 +33,10 @@ class ApiGenMakeAll extends Command
 
     private function setModule(): void
     {
-        if($this->module==='') {
-            $this->module = $this->ask("Please specify Module Name") ?? '';
+        if ($this->module === '') {
+            $this->module = $this->ask('Please specify Module Name') ?? '';
         }
-        if($this->module==='') {
+        if ($this->module === '') {
             $this->setModule();
         }
     }
