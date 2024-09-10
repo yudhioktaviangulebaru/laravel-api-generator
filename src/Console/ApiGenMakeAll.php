@@ -12,7 +12,7 @@ class ApiGenMakeAll extends Command
      *
      * @var string
      */
-    protected $signature = 'api-generate:all {module}';
+    protected $signature = 'apigen:make {module?}';
 
     /**
      * The console command description.
