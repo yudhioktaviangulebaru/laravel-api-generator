@@ -1,5 +1,7 @@
 {
     "name": "yudhi/apigen",
+    "type": "library",
+    "version": "1.0.0",
     "description": "Simple API generator for Laravel",
     "minimum-stability": "stable",
     "require-dev": {
@@ -58,5 +60,12 @@
         "lint": [
             "@php vendor/bin/phpstan analyse --verbose --ansi"
         ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Yudhi\\Apigen\\ApiGenServiceProvider"
+            ]
+        }
     }
 }
