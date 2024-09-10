@@ -1,19 +1,24 @@
 <?php
+
+use Yudhi\Apigen\Core\Controller;
+use Yudhi\Apigen\Helpers\DirHelper;
+
 return
     [
-        'abstractControllerName' => 'App\\Http\\Controllers\\Controller',
-        'rootNamespace' => 'App',
-        'basePath' => base_path(),
-        'appPath' => app_path(),
-        'stubPath' => [
-            'controller' => '{rootPath}'.DIRECTORY_SEPARATOR.'stubs'.DIRECTORY_SEPARATOR.'controller.stub',
-            'entity' => '{rootPath}'.DIRECTORY_SEPARATOR.'stubs'.DIRECTORY_SEPARATOR.'entity.stub',
-            'repository' => '{rootPath}'.DIRECTORY_SEPARATOR.'stubs'.DIRECTORY_SEPARATOR.'repository.stub',
-            'service' => '{rootPath}'.DIRECTORY_SEPARATOR.'stubs'.DIRECTORY_SEPARATOR.'service.stub',
-            'requests' => [
-                'base' => '{rootPath}'.DIRECTORY_SEPARATOR.'stubs'.DIRECTORY_SEPARATOR.'request.base.stub',
-                'create' => '{rootPath}'.DIRECTORY_SEPARATOR.'stubs'.DIRECTORY_SEPARATOR.'request.create.stub',
-                'update' => '{rootPath}'.DIRECTORY_SEPARATOR.'stubs'.DIRECTORY_SEPARATOR.'request.update.stub',
+        'abstractControllerName' => Controller::class,
+        'rootNamespace' => 'Yudhi\\ApiGen\\App',
+        'basePath'      => base_path() . DIRECTORY_SEPARATOR,
+        'appPath'       => app_path() . DIRECTORY_SEPARATOR,
+        'stubPath'      => [
+            'controller' => DirHelper::stubDir('controller.stub'),
+            'entity'     => DirHelper::stubDir('entity.stub'),
+            'repository' => DirHelper::stubDir('repository.stub'),
+            'service'    => DirHelper::stubDir('service.stub'),
+            'requests'   => [
+                'base'   => DirHelper::stubDir('request.base.stub'),
+                'create' => DirHelper::stubDir('request.create.stub'),
+                'update' => DirHelper::stubDir('request.update.stub'),
             ],
-        ]
-];
+        ],
+
+    ];
