@@ -1,7 +1,8 @@
 # Laravel API Generator
 
 a simple artisan command to generate all things you need 
-
+### Requirement
+- Laravel 11+
 ### Install 
 ```composer require yudhi/apigen```
 
