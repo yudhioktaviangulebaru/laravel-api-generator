@@ -6,7 +6,7 @@ use Yudhi\Apigen\Helpers\DirHelper;
 return
     [
         'abstractControllerName' => Controller::class,
-        'rootNamespace' => 'Yudhi\\ApiGen\\App',
+        'rootNamespace' => 'App',
         'basePath'      => base_path() . DIRECTORY_SEPARATOR,
         'appPath'       => app_path('/Core') . DIRECTORY_SEPARATOR,
         'stubPath'      => [
